@@ -119,33 +119,6 @@ class Ball
             };
         }
 
-        if (players_nb == 3)
-        {
-            if (Math.ceil(this.x) + this.width >= this.game.left_player.x && Math.ceil(this.x) <= this.game.left_player.x + this.game.left_player.width)
-            {
-                if (Math.ceil(this.y) + this.height == this.game.left_player.y)
-                    return (true);
-                if (Math.ceil(this.y) == this.game.left_player.y + this.game.left_player.height)
-                    return (true);
-            }
-
-            if (Math.ceil(this.x) + this.width >= this.game.right_player_1.x && Math.ceil(this.x) <= this.game.right_player_1.x + this.game.right_player_1.width)
-            {
-                if (Math.ceil(this.y) + this.height == this.game.right_player_1.y)
-                    return (true);
-                if (Math.ceil(this.y) == this.game.right_player_1.y + this.game.right_player_1.height)
-                    return (true);
-            }
-
-            if (Math.ceil(this.x) + this.width >= this.game.right_player_2.x && Math.ceil(this.x) <= this.game.right_player_2.x + this.game.right_player_2.width)
-            {
-                if (Math.ceil(this.y) + this.height == this.game.right_player_2.y)
-                    return (true);
-                if (Math.ceil(this.y) == this.game.right_player_2.y + this.game.right_player_2.height)
-                    return (true);
-            }
-        }
-
         return (false);
     }
 
@@ -260,20 +233,10 @@ class Ball
 
         if (this.isAboveOrUnderPlayer() == true)
         {
-            if (players_nb == 2)
-            {
-                if (Math.ceil(this.y) + this.height == this.game.left_player.y || Math.ceil(this.y) + this.height == this.game.right_player.y)
-                    this.y = this.y - this.speed;
-                else
-                    this.y = this.y + this.speed;
-            }
-            if (players_nb == 3)
-            {
-                if (Math.ceil(this.y) + this.height == this.game.left_player.y || Math.ceil(this.y) + this.height == this.game.right_player_1.y || Math.ceil(this.y) + this.height == this.game.right_player_2.y)
-                    this.y = this.y - this.speed;
-                else
-                    this.y = this.y + this.speed;
-            }
+            if (Math.ceil(this.y) + this.height == this.game.left_player.y || Math.ceil(this.y) + this.height == this.game.right_player.y)
+                this.y = this.y - this.speed;
+            else
+                this.y = this.y + this.speed;
         }
         this.game.sounds.limit.play();
     }

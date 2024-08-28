@@ -30,30 +30,19 @@ function displayCountDown(nb)
     let menu_music = document.getElementById('mgs');
     let game_music = gameMusicSelector();
 
-    if (role == 'guest')
-        timer = document.getElementById('1v1_guest_timer');
-    else if (role == 'host')
-        timer = document.getElementById('1v1_host_timer');
-    else if (players_nb == 2)
-        timer = document.getElementById('1v1_local_timer');
-    else
-        timer = document.getElementById('2v1_local_timer');
-
+    timer = document.getElementById('1v1_local_timer');
     timer.classList.remove("d-none");
 
     if (nb == 3){
         menu_music.pause();
-        document.getElementById('lalilulelo-3').play();
         timer.textContent = "3";
         game.refreshBackground();
     }
     else if (nb == 2){
-        document.getElementById('lalilulelo-2').play();
         timer.textContent = "2";
         game.refreshScores();
     }
     else if (nb == 1){
-        document.getElementById('lalilulelo-1').play();
         timer.textContent = "1";
         game.refreshPlayers();
     }
@@ -70,14 +59,7 @@ function displayCountDown(nb)
         game.sounds.alert.play();
         menu_music.pause();
         addKeyboardMonitoring();
-        if (players_nb == 2 && (role == 'guest' || role == 'host')){
-            game.start_time = getActualTimeSeconds();
-            startOnline1v1();
-        }
-        else if (players_nb == 2)
-            startLocal1v1();
-        else
-            startLocal1v2();
+        startLocal1v1();
         return ;
     }
     setTimeout(displayCountDown, 1000, --nb);
@@ -88,9 +70,6 @@ function displayCountDown(nb)
 let gameKeys = {
     KeyE: false,
     KeyD: false,
-
-    KeyY: false,
-    KeyH: false,
 
     KeyO: false,
     KeyL: false,

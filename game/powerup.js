@@ -44,17 +44,7 @@ class PowerUp
         if (this.x <= this.game.game_width / 2)
             player = this.game.left_player;
         else
-        {
-            if (players_nb == 2)
-                player = this.game.right_player;
-            else
-            {
-                if (this.y < this.game.game_height / 2)
-                    player = this.game.right_player_1;
-                else
-                    player = this.game.right_player_2;
-            }
-        }
+            player = this.game.right_player;
 
         if (this.y + this.height >= player.y && this.y <= player.y + player.height)
         {
@@ -134,12 +124,7 @@ class PowerUp
 
     applyPlayerBonus()
     {
-        if (role == null || role == 'host')
-        {
-            bonus_type = generateNumber(2);
-            if (role == 'host')
-                data_channel.send(`b-type:${bonus_type}_${this.name}`);
-        }
+        bonus_type = generateNumber(2);
 
         if (players_nb == 2)
         {
@@ -171,51 +156,6 @@ class PowerUp
                     this.game.right_player.speed = this.game.right_player.speed + 5;
                     this.game.right_player.bonus = true;
                     this.game.right_player.bonus_message = "+ speed";
-                }
-            }
-        }
-
-        if (players_nb == 3)
-        {
-            if (this.x <= this.game.game_width / 2)
-            {
-                if (bonus_type == 1 && this.game.right_player_1.height == this.game.bar_height && this.game.right_player_2.height == this.game.bar_height)
-                {
-                    this.game.right_player_1.height = this.game.right_player_1.height - (this.game.right_player_1.height / 2), this.game.right_player_2.height = this.game.right_player_2.height - (this.game.right_player_2.height / 2);
-                    this.game.right_player_1.bonus = true;
-                    this.game.right_player_1.bonus_message = "- size";
-                    this.game.right_player_2.bonus = true;
-                    this.game.right_player_2.bonus_message = "- size";
-                }
-                else
-                {
-                    this.game.left_player.speed = this.game.left_player.speed + 5;
-                    this.game.left_player.bonus = true;
-                    this.game.left_player.bonus_message = "+ speed";
-                }
-            }
-            else
-            {
-                if (bonus_type == 1 && this.game.left_player.height == this.game.bar_height)
-                {
-                    this.game.left_player.height = this.game.left_player.height - (this.game.left_player.height / 2);
-                    this.game.left_player.bonus = true;
-                    this.game.left_player.bonus_message = "- size";
-                }
-                else
-                {
-                    if (this.y < this.game.game_height / 2)
-                    {
-                        this.game.right_player_1.speed = this.game.right_player_1.speed + 5;
-                        this.game.right_player_1.bonus = true;
-                        this.game.right_player_1.bonus_message = "+ speed";
-                    }
-                    else
-                    {
-                        this.game.right_player_2.speed = this.game.right_player_2.speed + 5;
-                        this.game.right_player_2.bonus = true;
-                        this.game.right_player_2.bonus_message = "+ speed";
-                    }
                 }
             }
         }
@@ -281,29 +221,12 @@ class PowerUp
         }
     }
 
-    applyStats()
-    {
-        if (this.isAtPlayer() == true)
-        {
-            if (role == null)
-                this.bonus_taken++;
-            else
-            {
-                if (role == 'host' && this.x < this.game.game_width / 2 || role == 'guest' && this.x > this.game.game_width / 2)
-                    this.onl_taken++;
-            }
-        }
-    }
-
     animate()
     {
         if (this.isAtLimits() == true)
             this.direction = this.getOpposite(), this.getAwayFromLimits();
         else if (this.isAtPlayer() == true)
-        {
             this.applyPlayerBonus();
-            this.applyStats();
-        }
         else if (this.isAtBall() == true)
             this.applyBallBonus(), this.alive = false;
 

@@ -1,12 +1,12 @@
 // < game class > //
 
-class LocalGame1v2
+class LocalGame1v1
 {
     constructor()
     {
         // global infos initialization
 
-        this.player_nb = 3;
+        this.player_nb = 2;
         this.scores = [0, 0];
 
         this.game_width = 1100;
@@ -39,27 +39,29 @@ class LocalGame1v2
 
         // canvas creation
 
-        this.canvas = document.getElementById('one_vs_two_local_game');
+        if (type == "tournament")
+            this.canvas = document.getElementById('tournament_game');
+        else
+            this.canvas = document.getElementById('one_vs_one_local_game');
         this.display = this.canvas.getContext('2d');
-
 
         this.canvas.width = this.game_width;
         this.canvas.height = this.game_height;
 
         // game display loading
 
-        if (high_contrast == "true")
-            this.menu_color = "white", this.background_color = "black", this.bar_color = "white", this.ball_color = "white";
-        else
-            this.menu_color = "black", this.background_color = "white", this.bar_color = "black", this.ball_color = "black";
+        // if (high_contrast == "true")
+        //     this.menu_color = "white", this.background_color = "black", this.bar_color = "white", this.ball_color = "white";
+        // else
+        //     this.menu_color = "black", this.background_color = "white", this.bar_color = "black", this.ball_color = "black";
 
-        if (game_map != null && game_map != "default")
-        {
-            if (game_map == "red")
-                this.background_color = "brown";
-            else
-                this.background_color = game_map;
-        }
+        // if (game_map != null && game_map != "default")
+        // {
+        //     if (game_map == "red")
+        //         this.background_color = "brown";
+        //     else
+        //         this.background_color = game_map;
+        // }
 
         // displaying background
 
@@ -104,39 +106,21 @@ class LocalGame1v2
             color: this.bar_color
         }
 
-        let right_player_one_data = {
+        let right_player_data = {
             game: this,
 
             object_width: this.bar_width,
             object_heigth : this.bar_height,
 
             map_x: ((this.game_width - this.bar_width) - this.bar_width),
-            map_y: ((this.game_height / 4) - this.bar_height / 2),
+            map_y: ((this.game_height / 2) - this.bar_height / 2),
 
             bar_speed: this.bar_speed,
-            color: this.bar_color,
-
-            pos: "up"
+            color: this.bar_color
         }
 
-        let right_player_two_data = {
-            game: this,
-
-            object_width: this.bar_width,
-            object_heigth : this.bar_height,
-
-            map_x: ((this.game_width - this.bar_width) - this.bar_width),
-            map_y: ((this.game_height / 2 + this.game_height / 4) - this.bar_height / 2),
-
-            bar_speed: this.bar_speed,
-            color: this.bar_color,
-
-            pos: "down"
-        }
-
-        this.left_player = new Bar1v1(...Object.values(left_player_data))
-        this.right_player_1 = new Bar1v2(...Object.values(right_player_one_data));
-        this.right_player_2 = new Bar1v2(...Object.values(right_player_two_data));
+        this.left_player = new Bar1v1(...Object.values(left_player_data));
+        this.right_player = new Bar1v1(...Object.values(right_player_data));
 
         // ball creation
 
@@ -191,6 +175,7 @@ class LocalGame1v2
 
                 x_pos : (this.game_width / 2 + (this.game_width / 4)),
                 y_pos : (this.game_height / 2),
+
                 speed: 2,
                 color: this.bonus_color,
 
@@ -204,13 +189,13 @@ class LocalGame1v2
 
         // sounds initialization
 
-        let the_sounds = {
-            alert: document.getElementById('alert_sound'),
-            limit: document.getElementById('knock_sound'),
-            powerup: document.getElementById('bonus_sound')
-        }
+        // let the_sounds = {
+        //     alert: document.getElementById('alert_sound'),
+        //     limit: document.getElementById('knock_sound'),
+        //     powerup: document.getElementById('bonus_sound')
+        // }
 
-        this.sounds = the_sounds;
+        // this.sounds = the_sounds;
 
         // life initialization
 
@@ -287,22 +272,16 @@ class LocalGame1v2
         if (gameKeys.KeyD == true && gameKeys.KeyE == false)
             this.left_player.moveDown();
 
-        if (gameKeys.KeyY == true && gameKeys.KeyH == false)
-            this.right_player_1.moveUp();
-        if (gameKeys.KeyH == true && gameKeys.KeyY == false)
-            this.right_player_1.moveDown();
-
         if (gameKeys.KeyO == true && gameKeys.KeyL == false)
-            this.right_player_2.moveUp();
+            this.right_player.moveUp();
         if (gameKeys.KeyL == true && gameKeys.KeyO == false)
-            this.right_player_2.moveDown();
+            this.right_player.moveDown();
 
         this.left_player.print();
-        this.right_player_1.print();
-        this.right_player_2.print();
+        this.right_player.print();
 
         if (gameMode != "normal")
-            this.left_player.displayBonus(), this.right_player_1.displayBonus(), this.right_player_2.displayBonus();
+            this.left_player.displayBonus(), this.right_player.displayBonus();
     }
 
     refreshLives()
@@ -326,7 +305,6 @@ class LocalGame1v2
         if (this.alert < 100)
             this.ball.printAlert(), this.alert++;
 
-        this.ball.print();
         this.ball.animate();
         this.ball.print();
     }
@@ -352,13 +330,13 @@ class LocalGame1v2
     {
         this.scores[0] = 0;
         this.scores[1] = 0;
-        this.left_player.reset();
-        this.right_player_1.reset();
-        this.right_player_2.reset();
 
-        this.ball.reset();
+        this.left_player.reset();
+        this.right_player.reset();
 
         this.alert = 0;
+
+        this.ball.reset();
 
         if (gameMode != "normal")
             this.bonus_one.reset('one'), this.bonus_two.reset('two');
@@ -382,22 +360,10 @@ class LocalGame1v2
         if (this.scores[0] > 9 || this.scores[1] > 9)
         {
             if (this.scores[0] > 9)
-                document.getElementById('left_side_won_text').style.display = "block";
+                document.getElementById('left_player_won_text').style.display = "block";
             if (this.scores[1] > 9)
-                document.getElementById('right_side_won_text').style.display = "block";
+                document.getElementById('right_player_won_text').style.display = "block";
 
-            localStorage.setItem('lcl_game_played_nb', (parseInt(localStorage.getItem('lcl_game_played_nb')) + 1).toString());
-
-            if (parseInt(localStorage.getItem('lcl_game_played_nb')) == 1)
-                displayAchievement("first local game")
-
-            localStorage.setItem('lcl_ball_exit_nb', (parseInt(localStorage.getItem('lcl_ball_exit_nb')) + game.ball.lcl_exit).toString());
-            localStorage.setItem('lcl_ball_bounce_nb', (parseInt(localStorage.getItem('lcl_ball_bounce_nb')) + game.ball.lcl_bounce).toString());
-
-            if (gameMode == 'bonus'){
-                localStorage.setItem('lcl_bonus_taken_nb', (parseInt(localStorage.getItem('lcl_bonus_taken_nb')) + game.bonus_one.bonus_taken).toString());
-                localStorage.setItem('lcl_bonus_taken_nb', (parseInt(localStorage.getItem('lcl_bonus_taken_nb')) + game.bonus_two.bonus_taken).toString());
-            }
             return (true);
         }
         return (false);
@@ -406,58 +372,53 @@ class LocalGame1v2
 
 // < initialisation > //
 
-function initializeLocal1v2()
+function initializeLocal1v1()
 {
-    players_nb = 3;
+    players_nb = 2;
     role = null;
-    game = new LocalGame1v2();
+    game = new LocalGame1v1();
 
     game.refreshBackground();
 }
 
 // < menu display management > //
 
-function displayLocal1v2()
+function displayLocal1v1()
 {
-    document.getElementById('start_2v1_local').style.visibility = "hidden";
-    document.getElementById('left_side_won_text').style.display = "none";
-    document.getElementById('right_side_won_text').style.display = "none";
-    document.getElementById('2v1_local_timer').style.display = "block";
+    document.getElementById('start_1v1_local').style.visibility = "hidden";
+    document.getElementById('left_player_won_text').style.display = "none";
+    document.getElementById('right_player_won_text').style.display = "none";
+    document.getElementById('1v1_local_timer').style.display = "block";
 
-    stopKeysAnim();
     displayCountDown(3);
 }
 
-function removeLocal1v2()
+function removeLocal1v1()
 {
-    gameMusicSelector().pause();
-
-    document.getElementById('mgs').play();
-    document.getElementById('2v1_local_timer').style.display = "none";
-    document.getElementById('start_2v1_local').textContent = getTranslation("Launch a game");
-    document.getElementById('start_2v1_local').style.visibility = "visible";
-
-    resumeKeysAnim();
+    document.getElementById('1v1_local_timer').style.display = "none";
+    document.getElementById('start_1v1_local').textContent = getTranslation("Launch a game");
+    document.getElementById('start_1v1_local').style.visibility = "visible";
 }
 
-function startLocal1v2()
+function startLocal1v1()
 {
-    const frame = 1000/120;
+    if (game.isOver() == true || active == false)
+    {
+        game.refreshBackground();
+        game.resetGame();
+        active = false;
 
-    setTimeout(()=> {
+        removeLocal1v1();
 
-        if (game.isOver() == true || active == false)
-        {
-            game.refreshBackground();
-            game.resetGame();
-            active = false;
-
-            removeLocal1v2();
-        }
+        if (final == false)
+            removeTournamentGame();
         else
-        {
-            game.refreshDisplay();
-            requestAnimationFrame(startLocal1v2);
-        }
-    }, frame);
+            displayFinalWinner();
+        return;
+    }
+    else
+    {
+        game.refreshDisplay();
+        requestAnimationFrame(startLocal1v1);
+    }
 }
