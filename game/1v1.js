@@ -343,6 +343,11 @@ class LocalGame1v1
             return (true);
         if (this.scores[0] > 1 || this.scores[1] > 1)
         {
+            if (this.scores[0] > 9)
+                document.getElementById('infos').textContent = "Left player won the game";
+            if (this.scores[1] > 9)
+                document.getElementById('infos').textContent = "Right player won the game";
+            
             return (true);
         }
         return (false);
