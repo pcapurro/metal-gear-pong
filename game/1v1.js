@@ -44,18 +44,10 @@ class LocalGame1v1
 
         // game display loading
 
-        // if (high_contrast == "true")
-        //     this.menu_color = "white", this.background_color = "black", this.bar_color = "white", this.ball_color = "white";
-        // else
-        //     this.menu_color = "black", this.background_color = "white", this.bar_color = "black", this.ball_color = "black";
-
-        // if (game_map != null && game_map != "default")
-        // {
-        //     if (game_map == "red")
-        //         this.background_color = "brown";
-        //     else
-        //         this.background_color = game_map;
-        // }
+        this.menu_color = "white";
+        this.background_color = "black";
+        this.bar_color = "white";
+        this.ball_color = "white";
 
         // displaying background
 
