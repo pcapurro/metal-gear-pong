@@ -21,33 +21,30 @@ function getRandomBallDirection()
         return (-135);
 }
 
-// < timer > //
-
-function launchGame()
+function launchGame(value)
 {
     active = true;
 
-    document.getElementById('infos').textContent = "3";
-    game.refreshBackground();
-    setTimeout(() => {}, 1000);
-
-    document.getElementById('infos').textContent = "2";
-    game.refreshScores();
-    setTimeout(() => {}, 1000);
-
-    document.getElementById('infos').textContent = "1";
-    game.refreshPlayers();
-    setTimeout(() => {}, 1000);
-
-    document.getElementById('infos').textContent = "Go!";
-    setTimeout(() => {}, 500);
-    
     document.getElementById('start_game').style.display = "none";
-    document.getElementById('infos').style.display = "none";
-    // addKeyboardMonitoring();
-    startGame();
-}
+    document.getElementById('infos').style.display = "block";
 
+    if (value == 3)
+        document.getElementById('infos').textContent = "3", game.refreshBackground();
+    else if (value == 2)
+        document.getElementById('infos').textContent = "2", game.refreshScores();
+    else if (value == 1)
+        document.getElementById('infos').textContent = "1", game.refreshPlayers();
+    else if (value == 0)
+        document.getElementById('infos').textContent = "Go!", game.refreshLives();
+
+    if (value != -1)
+        setTimeout(launchGame, 1000, value - 1);
+    else
+    {
+        document.getElementById('infos').style.display = "none";
+        startGame();
+    }
+}
 
 // < keys > //
 

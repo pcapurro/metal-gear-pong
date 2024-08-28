@@ -11,11 +11,11 @@ function removeTitlePage()
 
     document.getElementById('game_page').style.display = "block";
     document.getElementById('infos').style.display = "none";
-    document.getElementById('start_game').onclick = launchGame;
+    document.getElementById('start_game').onclick = function () { launchGame(3) };
 }
 
 function removeGame()
 {
     document.getElementById('infos').style.display = "none";
-    document.getElementById('start_game').style.visibility = "visible";
+    document.getElementById('start_game').style.display = "block";
 }
