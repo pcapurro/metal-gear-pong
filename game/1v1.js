@@ -353,30 +353,8 @@ class LocalGame1v1
 
 function initializeGame()
 {
-    players_nb = 2;
-    role = null;
     game = new LocalGame1v1();
-
     game.refreshBackground();
-}
-
-// < menu display management > //
-
-function displayGame()
-{
-    // document.getElementById('start_1v1_local').style.visibility = "hidden";
-    // document.getElementById('left_player_won_text').style.display = "none";
-    // document.getElementById('right_player_won_text').style.display = "none";
-    // document.getElementById('1v1_local_timer').style.display = "block";
-
-    displayCountDown(3);
-}
-
-function removeGame()
-{
-    // document.getElementById('1v1_local_timer').style.display = "none";
-    // document.getElementById('start_1v1_local').textContent = getTranslation("Launch a game");
-    // document.getElementById('start_1v1_local').style.visibility = "visible";
 }
 
 function startGame()

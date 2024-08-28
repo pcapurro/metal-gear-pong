@@ -23,47 +23,31 @@ function getRandomBallDirection()
 
 // < timer > //
 
-function displayCountDown(nb)
+function launchGame()
 {
     active = true;
-    let timer;
-    // let menu_music = document.getElementById('mgs');
-    let game_music = gameMusicSelector();
 
-    // timer = document.getElementById('1v1_local_timer');
-    timer.classList.remove("d-none");
+    document.getElementById('infos').textContent = "3";
+    game.refreshBackground();
+    setTimeout(() => {}, 1000);
 
-    if (nb == 3){
-        menu_music.pause();
-        timer.textContent = "3";
-        game.refreshBackground();
-    }
-    else if (nb == 2){
-        timer.textContent = "2";
-        game.refreshScores();
-    }
-    else if (nb == 1){
-        timer.textContent = "1";
-        game.refreshPlayers();
-    }
-    else if (nb == 0)
-    {
-        game.refreshLives();
-        timer.textContent = getTranslation("Go!")
-    }
-    else if (nb == -1)
-    {
-        timer.classList.add("d-none");
-        game_music.play();
-        game_music.loop = true;
-        // game.sounds.alert.play();
-        menu_music.pause();
-        addKeyboardMonitoring();
-        startGame();
-        return ;
-    }
-    setTimeout(displayCountDown, 1000, --nb);
+    document.getElementById('infos').textContent = "2";
+    game.refreshScores();
+    setTimeout(() => {}, 1000);
+
+    document.getElementById('infos').textContent = "1";
+    game.refreshPlayers();
+    setTimeout(() => {}, 1000);
+
+    document.getElementById('infos').textContent = "Go!";
+    setTimeout(() => {}, 500);
+    
+    document.getElementById('start_game').style.display = "none";
+    document.getElementById('infos').style.display = "none";
+    // addKeyboardMonitoring();
+    startGame();
 }
+
 
 // < keys > //
 

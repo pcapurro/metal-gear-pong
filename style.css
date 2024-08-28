@@ -1,4 +1,15 @@
-#game_canvas, #start_game
+#game_page
+{
+    top: 50%;
+    transform: translateY(+5%);
+}
+
+#game_canvas
+{
+    border: solid white;
+}
+
+#game_canvas, #start_game, #infos
 {
     display: block;
     margin-left: auto;

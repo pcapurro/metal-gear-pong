@@ -59,40 +59,16 @@ class Ball
 
     isFrontPlayer()
     {
-        if (players_nb == 2)
+        if (Math.ceil(this.x) == this.game.left_player.x + this.game.left_player.width)
         {
-            if (Math.ceil(this.x) == this.game.left_player.x + this.game.left_player.width)
-            {
-                if (Math.ceil(this.y) + this.height >= this.game.left_player.y && Math.ceil(this.y) <= this.game.left_player.y + this.game.left_player.height)
-                    return (true);
-            }
-
-            if (Math.ceil(this.x) + this.width == this.game.right_player.x)
-            {
-                if (Math.ceil(this.y) + this.height >= this.game.right_player.y && Math.ceil(this.y) <= this.game.right_player.y + this.game.right_player.height)
-                    return (true);
-            }
+            if (Math.ceil(this.y) + this.height >= this.game.left_player.y && Math.ceil(this.y) <= this.game.left_player.y + this.game.left_player.height)
+                return (true);
         }
 
-        if (players_nb == 3)
+        if (Math.ceil(this.x) + this.width == this.game.right_player.x)
         {
-            if (Math.ceil(this.x) == this.game.left_player.x + this.game.left_player.width)
-            {
-                if (Math.ceil(this.y) + this.height >= this.game.left_player.y && Math.ceil(this.y) <= this.game.left_player.y + this.game.left_player.height)
-                    return (true);
-            }
-
-            if (Math.ceil(this.x) + this.width == this.game.right_player_1.x)
-            {
-                if (Math.ceil(this.y) + this.height >= this.game.right_player_1.y && Math.ceil(this.y) <= this.game.right_player_1.y + this.game.right_player_1.height)
-                    return (true);
-            }
-
-            if (Math.ceil(this.x) + this.width == this.game.right_player_2.x)
-            {
-                if (Math.ceil(this.y) + this.height >= this.game.right_player_2.y && Math.ceil(this.y) <= this.game.right_player_2.y + this.game.right_player_2.height)
-                    return (true);
-            }
+            if (Math.ceil(this.y) + this.height >= this.game.right_player.y && Math.ceil(this.y) <= this.game.right_player.y + this.game.right_player.height)
+                return (true);
         }
 
         return (false);
@@ -100,23 +76,20 @@ class Ball
 
     isAboveOrUnderPlayer()
     {
-        if (players_nb == 2)
+        if (Math.ceil(this.x) + this.width >= this.game.left_player.x && Math.ceil(this.x) <= this.game.left_player.x + this.game.left_player.width)
         {
-            if (Math.ceil(this.x) + this.width >= this.game.left_player.x && Math.ceil(this.x) <= this.game.left_player.x + this.game.left_player.width)
-            {
-                if (Math.ceil(this.y) + this.height == this.game.left_player.y)
-                    return (true);
-                if (Math.ceil(this.y) == this.game.left_player.y + this.game.left_player.height)
-                    return (true);
-            };
+            if (Math.ceil(this.y) + this.height == this.game.left_player.y)
+                return (true);
+            if (Math.ceil(this.y) == this.game.left_player.y + this.game.left_player.height)
+                return (true);
+        }
 
-            if (Math.ceil(this.x) + this.width >= this.game.right_player.x && Math.ceil(this.x) <= this.game.right_player.x + this.game.right_player.width)
-            {
-                if (Math.ceil(this.y) + this.height == this.game.right_player.y)
-                    return (true);
-                if (Math.ceil(this.y) == this.game.right_player.y + this.game.right_player.height)
-                    return (true);
-            };
+        if (Math.ceil(this.x) + this.width >= this.game.right_player.x && Math.ceil(this.x) <= this.game.right_player.x + this.game.right_player.width)
+        {
+            if (Math.ceil(this.y) + this.height == this.game.right_player.y)
+                return (true);
+            if (Math.ceil(this.y) == this.game.right_player.y + this.game.right_player.height)
+                return (true);
         }
 
         return (false);
@@ -142,20 +115,20 @@ class Ball
 
     addExtraDirection()
     {
-        if (this.x < this.game.game_width / 2)
-        {
-            if (gameKeys.KeyE == true)
-                this.direction = this.direction + 5;
-            else if (gameKeys.KeyD == true)
-                this.direction = this.direction - 5;
-        }
-        else
-        {
-            if (gameKeys.KeyO == true || (players_nb == 3 && gameKeys.KeyY == true))
-                this.direction = this.direction + 5;
-            else if (gameKeys.KeyL == true || (players_nb == 3 && gameKeys.KeyH == true))
-                this.direction = this.direction - 5;
-        }
+        // if (this.x < this.game.game_width / 2)
+        // {
+        //     if (gameKeys.KeyE == true)
+        //         this.direction = this.direction + 5;
+        //     else if (gameKeys.KeyD == true)
+        //         this.direction = this.direction - 5;
+        // }
+        // else
+        // {
+        //     if (gameKeys.KeyO == true || (players_nb == 3 && gameKeys.KeyY == true))
+        //         this.direction = this.direction + 5;
+        //     else if (gameKeys.KeyL == true || (players_nb == 3 && gameKeys.KeyH == true))
+        //         this.direction = this.direction - 5;
+        // }
     }
 
     addExtraSpeed()
@@ -262,30 +235,10 @@ class Ball
     animate()
     {
         if (this.isOffLimit() == true)
-        {
-            if (role == null)
-                this.lcl_exit++;
-
-            if (role == null || role == 'host')
-                this.game.restartRound();
-        }
+            this.game.restartRound();
         else if (this.isUpOrDown() == true || this.isAtPlayer() == true)
-        {
-            if (role == null)
-                this.lcl_bounce++;
-            else
-            {
-                if (this.isFrontPlayer() == true)
-                {
-                    if (role == 'host' && this.x < this.game.game_width / 2 || role == 'guest' && this.x > this.game.game_width / 2)
-                        this.onl_return++;
-                }
-            }
-            if (role == null || role == 'host')
-                this.direction = this.getOpposite(), this.getAwayFromLimits();
-        }
+           this.direction = this.getOpposite(), this.getAwayFromLimits();
 
-        if (role == null || role == 'host')
-            this.move();
+        this.move();
     }
 }
