@@ -5,6 +5,7 @@
 
         <meta charset="utf-8">
         <title>Metal Gear Pong</title>
+        <link id="tab_icon" type="image/png" rel="icon" href="./materials/images/fox-logo.png">
 
         <link rel="stylesheet" href="./style.css">
 
@@ -12,12 +13,18 @@
 
     <body>
 
-        <div>
-
+        <div id="game_page">
+            <canvas id="game_canvas" width="1100" height="720"></canvas>
         </div>
 
     </body>
 
-    <!-- Javascript files -->
+    <!-- JavaScript files -->
+
+    <script src="./game/1v1.js"></script>
+    <script src="./game/ball.js"></script>
+    <script src="./game/game.js"></script>
+    <script src="./game/players.js"></script>
+    <script src="./game/powerup.js"></script>
 
 </html>
