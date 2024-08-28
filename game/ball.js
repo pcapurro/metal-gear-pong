@@ -26,8 +26,8 @@ class Ball
         this.onl_received = 0;
         this.onl_return = 0;
 
-        this.bandana_left = new Image(), this.bandana_left.src = 'Materials/images/game/bandana_left.png';
-        this.bandana_right = new Image(), this.bandana_right.src = 'Materials/images/game/bandana_right.png';
+        this.bandana_left = new Image(), this.bandana_left.src = 'materials/images/bandana_left.png';
+        this.bandana_right = new Image(), this.bandana_right.src = 'materials/images/bandana_right.png';
     }
 
     print()
@@ -238,7 +238,7 @@ class Ball
             else
                 this.y = this.y + this.speed;
         }
-        this.game.sounds.limit.play();
+        // this.game.sounds.limit.play();
     }
 
     reset()

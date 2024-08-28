@@ -27,10 +27,10 @@ function displayCountDown(nb)
 {
     active = true;
     let timer;
-    let menu_music = document.getElementById('mgs');
+    // let menu_music = document.getElementById('mgs');
     let game_music = gameMusicSelector();
 
-    timer = document.getElementById('1v1_local_timer');
+    // timer = document.getElementById('1v1_local_timer');
     timer.classList.remove("d-none");
 
     if (nb == 3){
@@ -56,10 +56,10 @@ function displayCountDown(nb)
         timer.classList.add("d-none");
         game_music.play();
         game_music.loop = true;
-        game.sounds.alert.play();
+        // game.sounds.alert.play();
         menu_music.pause();
         addKeyboardMonitoring();
-        startLocal1v1();
+        startGame();
         return ;
     }
     setTimeout(displayCountDown, 1000, --nb);
@@ -77,46 +77,46 @@ let gameKeys = {
 
 // < trigger > //
 
-function addKeyboardMonitoring(){
-    window.addEventListener('keydown', keyboardMonitoring_keyDown);
-    window.addEventListener('keyup', keyboardMonitoring_keyUp);
-}
+// function addKeyboardMonitoring(){
+//     window.addEventListener('keydown', keyboardMonitoring_keyDown);
+//     window.addEventListener('keyup', keyboardMonitoring_keyUp);
+// }
 
-function removeKeyboardMonitoring(){
-    window.removeEventListener('keydown', keyboardMonitoring_keyDown);
-    window.removeEventListener('keyup', keyboardMonitoring_keyUp);
-}
+// function removeKeyboardMonitoring(){
+//     window.removeEventListener('keydown', keyboardMonitoring_keyDown);
+//     window.removeEventListener('keyup', keyboardMonitoring_keyUp);
+// }
 
-function keyboardMonitoring_keyDown(event){
-    let key = event.key.toLowerCase();
-    if (key == 'e')
-        gameKeys.KeyE = true;
-    else if (key == 'd')
-        gameKeys.KeyD = true;
-    if (key == 'y')
-        gameKeys.KeyY = true;
-    else if (key == 'h')
-        gameKeys.KeyH = true;
-    if (key == 'o')
-        gameKeys.KeyO = true;
-    else if (key == 'l')
-        gameKeys.KeyL = true;
-}
+// function keyboardMonitoring_keyDown(event){
+//     let key = event.key.toLowerCase();
+//     if (key == 'e')
+//         gameKeys.KeyE = true;
+//     else if (key == 'd')
+//         gameKeys.KeyD = true;
+//     if (key == 'y')
+//         gameKeys.KeyY = true;
+//     else if (key == 'h')
+//         gameKeys.KeyH = true;
+//     if (key == 'o')
+//         gameKeys.KeyO = true;
+//     else if (key == 'l')
+//         gameKeys.KeyL = true;
+// }
 
-function keyboardMonitoring_keyUp(event){
-    let key = event.key.toLowerCase()
-        if (key == 'o')
-            gameKeys.KeyO = false;
-        else if (key == 'l')
-            gameKeys.KeyL = false;
+// function keyboardMonitoring_keyUp(event){
+//     let key = event.key.toLowerCase()
+//         if (key == 'o')
+//             gameKeys.KeyO = false;
+//         else if (key == 'l')
+//             gameKeys.KeyL = false;
 
-        if (key == 'e')
-            gameKeys.KeyE = false;
-        else if (key == 'd')
-            gameKeys.KeyD = false;
+//         if (key == 'e')
+//             gameKeys.KeyE = false;
+//         else if (key == 'd')
+//             gameKeys.KeyD = false;
 
-        if (key == 'y')
-            gameKeys.KeyY = false;
-        else if (key == 'h')
-            gameKeys.KeyH = false;
-}
+//         if (key == 'y')
+//             gameKeys.KeyY = false;
+//         else if (key == 'h')
+//             gameKeys.KeyH = false;
+// }

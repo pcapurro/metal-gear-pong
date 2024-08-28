@@ -24,10 +24,7 @@ class LocalGame1v1
         this.separator_width = 2;
         this.separator_space = 17;
 
-        if (text_size == "normal")
-            this.text_size = 85;
-        else
-            this.text_size = 100;
+        this.text_size = 85;
 
         this.text_font = "Arial";
 
@@ -39,10 +36,7 @@ class LocalGame1v1
 
         // canvas creation
 
-        if (type == "tournament")
-            this.canvas = document.getElementById('tournament_game');
-        else
-            this.canvas = document.getElementById('one_vs_one_local_game');
+        this.canvas = document.getElementById('game_canvas');
         this.display = this.canvas.getContext('2d');
 
         this.canvas.width = this.game_width;
@@ -202,10 +196,8 @@ class LocalGame1v1
         this.life_left = new Image();
         this.life_right = new Image();
     
-        if (high_contrast == true)
-            this.life_left.src = 'Materials/images/game/life/dark-left-life-100.png', this.life_right.src = 'Materials/images/game/life/dark-right-life-100.png';
-        else
-            this.life_left.src = 'Materials/images/game/life/light-left-life-100.png', this.life_right.src = 'Materials/images/game/life/light-right-life-100.png';
+        this.life_left.src = 'materials/images/dark-left-life-100.png';
+        this.life_right.src = 'materials/images/dark-right-life-100.png';
     }
 
     refreshDisplay()
@@ -223,18 +215,10 @@ class LocalGame1v1
 
     refreshPreferences()
     {
-        if (high_contrast == "true")
-            this.menu_color = "white", this.background_color = "black", this.bar_color = "white", this.ball_color = "white";
-        else
-            this.menu_color = "black", this.background_color = "white", this.bar_color = "black", this.ball_color = "black";
-
-        if (game_map != null && game_map != "default")
-        {
-            if (game_map == "red")
-                this.background_color = "brown";
-            else
-                this.background_color = game_map;
-        }
+        this.menu_color = "white";
+        this.background_color = "black";
+        this.bar_color = "white";
+        this.ball_color = "white";
     }
 
     refreshBackground()
@@ -357,13 +341,8 @@ class LocalGame1v1
     {
         if (active == false)
             return (true);
-        if (this.scores[0] > 9 || this.scores[1] > 9)
+        if (this.scores[0] > 1 || this.scores[1] > 1)
         {
-            if (this.scores[0] > 9)
-                document.getElementById('left_player_won_text').style.display = "block";
-            if (this.scores[1] > 9)
-                document.getElementById('right_player_won_text').style.display = "block";
-
             return (true);
         }
         return (false);
@@ -372,7 +351,7 @@ class LocalGame1v1
 
 // < initialisation > //
 
-function initializeLocal1v1()
+function initializeGame()
 {
     players_nb = 2;
     role = null;
@@ -383,24 +362,24 @@ function initializeLocal1v1()
 
 // < menu display management > //
 
-function displayLocal1v1()
+function displayGame()
 {
-    document.getElementById('start_1v1_local').style.visibility = "hidden";
-    document.getElementById('left_player_won_text').style.display = "none";
-    document.getElementById('right_player_won_text').style.display = "none";
-    document.getElementById('1v1_local_timer').style.display = "block";
+    // document.getElementById('start_1v1_local').style.visibility = "hidden";
+    // document.getElementById('left_player_won_text').style.display = "none";
+    // document.getElementById('right_player_won_text').style.display = "none";
+    // document.getElementById('1v1_local_timer').style.display = "block";
 
     displayCountDown(3);
 }
 
-function removeLocal1v1()
+function removeGame()
 {
-    document.getElementById('1v1_local_timer').style.display = "none";
-    document.getElementById('start_1v1_local').textContent = getTranslation("Launch a game");
-    document.getElementById('start_1v1_local').style.visibility = "visible";
+    // document.getElementById('1v1_local_timer').style.display = "none";
+    // document.getElementById('start_1v1_local').textContent = getTranslation("Launch a game");
+    // document.getElementById('start_1v1_local').style.visibility = "visible";
 }
 
-function startLocal1v1()
+function startGame()
 {
     if (game.isOver() == true || active == false)
     {
@@ -408,17 +387,12 @@ function startLocal1v1()
         game.resetGame();
         active = false;
 
-        removeLocal1v1();
-
-        if (final == false)
-            removeTournamentGame();
-        else
-            displayFinalWinner();
+        removeGame();
         return;
     }
     else
     {
         game.refreshDisplay();
-        requestAnimationFrame(startLocal1v1);
+        requestAnimationFrame(startGame);
     }
 }

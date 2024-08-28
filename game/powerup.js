@@ -26,7 +26,7 @@ class PowerUp
         this.onl_received = 0;
         this.name = name;
 
-        this.ration_img = new Image(), this.ration_img.src = 'Materials/images/game/ration.png';
+        this.ration_img = new Image(), this.ration_img.src = 'materials/images/ration.png';
     }
 
     print()
@@ -161,7 +161,7 @@ class PowerUp
         }
 
         this.alive = false;
-        this.game.sounds.powerup.play();
+        // this.game.sounds.powerup.play();
     }
 
     applyBallBonus()
