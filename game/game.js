@@ -1,25 +1,15 @@
-// < object utils > //
+// < initialisation > //
 
-function generateNumber(limit)
+function initializeGame()
 {
-    let value = Math.floor(Math.random() * limit) + 1;
-    return (value);
+    mode = "classic"; //
+    // theme = "light"; //
+
+    game = new LocalGame1v1();
+    game.refreshBackground();
 }
 
-function getRandomBallDirection()
-{
-    value = generateNumber(4);
-
-    if (value == 1)
-        return (45);
-    else if (value == 2)
-        return (135);
-
-    else if (value == 3)
-        return (-45);
-    else if (value == 4)
-        return (-135);
-}
+// < launch/start > //
 
 function launchGame(value)
 {
@@ -46,15 +36,23 @@ function launchGame(value)
     }
 }
 
-// < keys > //
+function startGame()
+{
+    if (game.isOver() == true || active == false)
+    {
+        game.refreshBackground();
+        game.resetGame();
+        active = false;
 
-let gameKeys = {
-    KeyE: false,
-    KeyD: false,
-
-    KeyO: false,
-    KeyL: false,
-};
+        removeGame();
+        return;
+    }
+    else
+    {
+        game.refreshDisplay();
+        requestAnimationFrame(startGame);
+    }
+}
 
 // < trigger > //
 

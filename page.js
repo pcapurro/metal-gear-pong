@@ -1,3 +1,34 @@
+function loadBackground()
+{
+    if (localStorage.getItem('theme') == null)
+    {
+        theme = "light";
+        localStorage.setItem('theme', 'light');
+        document.getElementById('body').style.backgroundColor = "white";
+    }
+    else
+    {
+        if (localStorage.getItem('theme') == "light")
+            theme = "light", document.getElementById('body').style.backgroundColor = "white";
+        else
+            theme = "dark", document.getElementById('body').style.backgroundColor = "black";
+    }
+}
+
+function loadTexts()
+{
+    if (theme == "light")
+    {
+        document.getElementById('start_game').style.color = "dark";
+        document.getElementById('infos').style.color = "dark";
+    }
+    else
+    {
+        document.getElementById('start_game').style.color = "white";
+        document.getElementById('infos').style.color = "white";
+    }
+}
+
 function displayTitlePage()
 {
     document.getElementById('game_page').style.display = "none";

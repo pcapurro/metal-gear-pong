@@ -30,7 +30,7 @@ class LocalGame1v1
 
         this.bonus_color = "green";
 
-        this.ball_direction = getRandomBallDirection();
+        this.ball_direction = getRandomDirection();
 
         this.alert = 0;
 
@@ -44,15 +44,20 @@ class LocalGame1v1
 
         // game display loading
 
-        // this.menu_color = "white";
-        // this.background_color = "black";
-        // this.bar_color = "white";
-        // this.ball_color = "white";
-
-        this.menu_color = "black";
-        this.background_color = "white";
-        this.bar_color = "black";
-        this.ball_color = "black";
+        if (theme == "light")
+        {
+            this.menu_color = "black";
+            this.background_color = "white";
+            this.bar_color = "black";
+            this.ball_color = "black";
+        }
+        else
+        {
+            this.menu_color = "white";
+            this.background_color = "black";
+            this.bar_color = "white";
+            this.ball_color = "white";
+        }
 
         // displaying background
 
@@ -140,7 +145,7 @@ class LocalGame1v1
 
         // bonus creation
 
-        if (gameMode != "normal")
+        if (mode != "classic")
         {
             let bonus_one_data = {
                 game: this,
@@ -193,20 +198,47 @@ class LocalGame1v1
         this.life_left = new Image();
         this.life_right = new Image();
     
-        this.life_left.src = 'materials/images/dark-left-life-100.png';
-        this.life_right.src = 'materials/images/dark-right-life-100.png';
+        if (theme == "light")
+            this.life_left.src = 'materials/images/dark-left-life-100.png', this.life_right.src = 'materials/images/dark-right-life-100.png';
+        else
+            this.life_left.src = 'materials/images/light-left-life-100.png', this.life_right.src = 'materials/images/light-right-life-100.png';
     }
 
     refreshDisplay()
     {
+        this.refreshPreference();
         this.refreshBackground();
         this.refreshScores();
         this.refreshPlayers();
         this.refreshLives();
         this.refreshBall();
 
-        if (gameMode != "normal")
+        if (mode != "classic")
             this.refreshBonus();
+    }
+
+    refreshPreference()
+    {
+        if (theme == "light")
+        {
+            this.menu_color = "black";
+            this.background_color = "white";
+            this.bar_color = "black";
+            this.ball_color = "black";
+
+            this.life_left.src = 'materials/images/dark-left-life-100.png';
+            this.life_right.src = 'materials/images/dark-right-life-100.png';
+        }
+        else
+        {
+            this.menu_color = "white";
+            this.background_color = "black";
+            this.bar_color = "white";
+            this.ball_color = "white";
+
+            this.life_left.src = 'materials/images/light-left-life-100.png';
+            this.life_right.src = 'materials/images/light-right-life-100.png';
+        }
     }
 
     refreshBackground()
@@ -252,7 +284,7 @@ class LocalGame1v1
         this.left_player.print();
         this.right_player.print();
 
-        if (gameMode != "normal")
+        if (mode != "classic")
             this.left_player.displayBonus(), this.right_player.displayBonus();
     }
 
@@ -310,7 +342,7 @@ class LocalGame1v1
 
         this.ball.reset();
 
-        if (gameMode != "normal")
+        if (mode != "classic")
             this.bonus_one.reset('one'), this.bonus_two.reset('two');
     }
 
@@ -339,31 +371,5 @@ class LocalGame1v1
             return (true);
         }
         return (false);
-    }
-}
-
-// < initialisation > //
-
-function initializeGame()
-{
-    game = new LocalGame1v1();
-    game.refreshBackground();
-}
-
-function startGame()
-{
-    if (game.isOver() == true || active == false)
-    {
-        game.refreshBackground();
-        game.resetGame();
-        active = false;
-
-        removeGame();
-        return;
-    }
-    else
-    {
-        game.refreshDisplay();
-        requestAnimationFrame(startGame);
     }
 }
