@@ -1,9 +1,5 @@
 function sortEvent(event)
 {
-    console.log("event of type ", event.type, " detected!");
-
-    console.log(active)
-
     if (event.type == 'keydown')
     {
         if (event.key == 'Enter' && page == "title")

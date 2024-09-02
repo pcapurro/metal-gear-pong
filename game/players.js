@@ -36,17 +36,17 @@ class Bar1v1
         {
             this.game.display.fillStyle = "green";
             if (this.x < this.game.game_width / 2)
-                this.game.display.fillText("+" + getTranslation("speed"), this.x + this.width + 20, this.y + (this.height / 2));
+                this.game.display.fillText("+speed", this.x + this.width + 20, this.y + (this.height / 2));
             else
-                this.game.display.fillText("+" + getTranslation("speed"), this.x - 20 - (this.game.display.measureText("+" + getTranslation("speed")).width), this.y + (this.height / 2));
+                this.game.display.fillText("+speed", this.x - 20 - (this.game.display.measureText("+speed").width), this.y + (this.height / 2));
         }
         if (this.bonus_message == "- size")
         {
             this.game.display.fillStyle = "red";
             if (this.x < this.game.game_width / 2)
-                this.game.display.fillText("-" + getTranslation("size"), this.x + this.width + 20, this.y + (this.height / 2));
+                this.game.display.fillText("-size", this.x + this.width + 20, this.y + (this.height / 2));
             else
-                this.game.display.fillText("-" + getTranslation("size"), this.x - 20 - (this.game.display.measureText("+" + getTranslation("size")).width), this.y + (this.height / 2));
+                this.game.display.fillText("-size", this.x - 20 - (this.game.display.measureText("+size").width), this.y + (this.height / 2));
         }
     }
 

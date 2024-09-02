@@ -2,7 +2,7 @@
 
 function initializeGame()
 {
-    mode = "classic"; //
+    mode = "bonus"; //
 
     game = new LocalGame1v1();
     game.refreshBackground();
