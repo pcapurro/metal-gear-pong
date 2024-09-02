@@ -115,20 +115,20 @@ class Ball
 
     addExtraDirection()
     {
-        // if (this.x < this.game.game_width / 2)
-        // {
-        //     if (gameKeys.KeyE == true)
-        //         this.direction = this.direction + 5;
-        //     else if (gameKeys.KeyD == true)
-        //         this.direction = this.direction - 5;
-        // }
-        // else
-        // {
-        //     if (gameKeys.KeyO == true || (players_nb == 3 && gameKeys.KeyY == true))
-        //         this.direction = this.direction + 5;
-        //     else if (gameKeys.KeyL == true || (players_nb == 3 && gameKeys.KeyH == true))
-        //         this.direction = this.direction - 5;
-        // }
+        if (this.x < this.game.game_width / 2)
+        {
+            if (gameKeys.KeyE == true)
+                this.direction = this.direction + 5;
+            else if (gameKeys.KeyD == true)
+                this.direction = this.direction - 5;
+        }
+        else
+        {
+            if (gameKeys.KeyO == true)
+                this.direction = this.direction + 5;
+            else if (gameKeys.KeyL == true)
+                this.direction = this.direction - 5;
+        }
     }
 
     addExtraSpeed()
@@ -211,7 +211,7 @@ class Ball
             else
                 this.y = this.y + this.speed;
         }
-        // this.game.sounds.limit.play();
+        this.game.sounds.limit.play();
     }
 
     reset()

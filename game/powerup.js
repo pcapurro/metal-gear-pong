@@ -158,7 +158,7 @@ class PowerUp
         }
 
         this.alive = false;
-        // this.game.sounds.powerup.play();
+        this.game.sounds.powerup.play();
     }
 
     applyBallBonus()
