@@ -97,9 +97,3 @@ function removeTitlePage()
     document.getElementById('theme_btn').onclick = switchTheme;
     document.getElementById('start_game').onclick = function () { launchGame(3) };
 }
-
-function removeGame()
-{
-    document.getElementById('infos').style.display = "none";
-    document.getElementById('start_game').classList.remove('d-none');
-}

@@ -186,12 +186,10 @@ class LocalGame1v1
         // sounds initialization
 
         let the_sounds = {
-            alert: document.getElementById('alert_sound'),
             limit: document.getElementById('knock_sound'),
             powerup: document.getElementById('bonus_sound')
         }
 
-        the_sounds.alert.volume = 0.1;
         the_sounds.limit.volume = 0.4;
         the_sounds.powerup.volume = 0.4;
 

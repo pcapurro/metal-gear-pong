@@ -30,8 +30,14 @@ function launchGame(value)
         setTimeout(launchGame, 1000, value - 1);
     else
     {
+        document.getElementById('alert_sound').volume = 0.1;
+        document.getElementById('alert_sound').play();
+
+        document.getElementById('duel_theme').volume = 0.1;
+        document.getElementById('duel_theme').loop = true;
+        document.getElementById('duel_theme').play();
+
         document.getElementById('infos').style.display = "none";
-        game.sounds.alert.play();
         startGame();
     }
 }
@@ -44,7 +50,7 @@ function startGame()
         game.resetGame();
         active = false;
 
-        removeGame();
+        stopGame();
         return;
     }
     else
@@ -52,6 +58,14 @@ function startGame()
         game.refreshDisplay();
         requestAnimationFrame(startGame);
     }
+}
+
+function stopGame()
+{
+    document.getElementById('infos').style.display = "none";
+    document.getElementById('start_game').classList.remove('d-none');
+
+    document.getElementById('duel_theme').pause();
 }
 
 // < player triggers > //
