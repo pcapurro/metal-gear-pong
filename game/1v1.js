@@ -44,10 +44,15 @@ class LocalGame1v1
 
         // game display loading
 
-        this.menu_color = "white";
-        this.background_color = "black";
-        this.bar_color = "white";
-        this.ball_color = "white";
+        // this.menu_color = "white";
+        // this.background_color = "black";
+        // this.bar_color = "white";
+        // this.ball_color = "white";
+
+        this.menu_color = "black";
+        this.background_color = "white";
+        this.bar_color = "black";
+        this.ball_color = "black";
 
         // displaying background
 
@@ -194,7 +199,6 @@ class LocalGame1v1
 
     refreshDisplay()
     {
-        this.refreshPreferences();
         this.refreshBackground();
         this.refreshScores();
         this.refreshPlayers();
@@ -203,14 +207,6 @@ class LocalGame1v1
 
         if (gameMode != "normal")
             this.refreshBonus();
-    }
-
-    refreshPreferences()
-    {
-        this.menu_color = "white";
-        this.background_color = "black";
-        this.bar_color = "white";
-        this.ball_color = "white";
     }
 
     refreshBackground()
@@ -333,7 +329,7 @@ class LocalGame1v1
     {
         if (active == false)
             return (true);
-        if (this.scores[0] > 1 || this.scores[1] > 1)
+        if (this.scores[0] > 9 || this.scores[1] > 9)
         {
             if (this.scores[0] > 9)
                 document.getElementById('infos').textContent = "Left player won the game";

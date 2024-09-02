@@ -25,7 +25,7 @@ function launchGame(value)
 {
     active = true;
 
-    document.getElementById('start_game').style.display = "none";
+    document.getElementById('start_game').classList.add('d-none');
     document.getElementById('infos').style.display = "block";
 
     if (value == 3)

@@ -9,7 +9,12 @@
     border: solid white;
 }
 
-#game_canvas, #start_game, #infos
+#infos
+{
+    font-size: 37px;
+}
+
+#game_canvas
 {
     display: block;
     margin-left: auto;
