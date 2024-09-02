@@ -1,7 +1,13 @@
-loadPreference();
+// localStorage.clear(); //
 
+var page;
+loadPreference();
 displayTitlePage();
+
 removeTitlePage(); //
+
+var keys;
+listenKeyboard();
 
 var game;
 var active;

@@ -40,6 +40,7 @@ function switchTheme()
 
     loadBackground();
     loadTexts();
+    refreshToastColors();
 
     game.refreshPreference();
     game.refreshBackground();
@@ -60,22 +61,32 @@ function loadTexts()
         document.getElementById('start_game').style.color = "black";
         document.getElementById('infos').style.color = "black";
         document.getElementById('main_line').style.color = "black";
+
+        document.getElementById('konami_title').style.color = "black";
+        document.getElementById('konami_quote').style.color = "black";
+        document.getElementById('konami_obj').style.color = "black";
     }
     else
     {
         document.getElementById('start_game').style.color = "white";
         document.getElementById('infos').style.color = "white";
         document.getElementById('main_line').style.color = "white";
+
+        document.getElementById('konami_title').style.color = "white";
+        document.getElementById('konami_quote').style.color = "white";
+        document.getElementById('konami_obj').style.color = "white";
     }
 }
 
 function displayTitlePage()
 {
+    page = "title";
     document.getElementById('game_page').style.display = "none";
 }
 
 function removeTitlePage()
 {
+    page = "game";
     document.getElementById('title_page').style.display = "none";
 
     initializeGame();

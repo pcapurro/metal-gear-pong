@@ -9,6 +9,14 @@
     font-size: 37px;
 }
 
+#konami_toast
+{
+    position: absolute;
+    bottom: 125px;
+    left: 15px;
+    max-width: 280px;
+}
+
 #main_line
 {
     width: 70%;

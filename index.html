@@ -19,9 +19,13 @@
 
     <body id="body" class="container">
 
+        <!-- Title page -->
+
         <div id="title_page">
             
         </div>
+
+        <!-- Game page -->
 
         <div id="game_page">
             <button id="theme_btn" class="btn border"></button>
@@ -32,7 +36,31 @@
             <hr id="main_line" class="mx-auto">
         </div>
 
+        <!-- Konami Code achievement -->
+
+        <div id="konami_toast" class="toast border border-2">
+            <div id="konami_toast_header" class="toast-header">
+                <img id="konami_toast_symbol" src="">
+                <strong id="konami_title" class="ms-2">Achievement unlocked!</strong>
+            </div>
+            <div id="konami_toast_body" class="toast-body border border-2">
+                <div>
+                    <a id="konami_quote">« You're pretty good! »</a>
+                </div>
+                <div>
+                    <a id="konami_obj">You typed the Konami Code.</a>
+                </div>
+            </div>
+        </div>
+
     </body>
+
+    <!-- Audio and music -->
+
+    <audio id="achiev_sound" class="sounds" src="./materials/sounds/achievement.mp3"></audio>
+    <audio id="alert_sound" class="sounds" src="./materials/sounds/mgs1-alert.mp3"></audio>
+    <audio id="knock_sound" class="sounds" src="./materials/sounds/knocking-sound.mp3"></audio>
+    <audio id="bonus_sound" class="sounds" src="./materials/sounds/bonus-sound.mp3"></audio>
 
     <!-- Bootstrap -->
 
@@ -47,7 +75,10 @@
     <script src="./game/players.js"></script>
     <script src="./game/powerup.js"></script>
 
-    <script src="./page.js"></script>
+    <script src="./interface/achievement.js"></script>
+    <script src="./interface/keys.js"></script>
+    <script src="./interface/page.js"></script>
+
     <script src="./init.js"></script>
 
 </html>
