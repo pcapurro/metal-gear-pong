@@ -4,14 +4,14 @@
     transform: translateY(+5%);
 }
 
-#game_canvas
-{
-    border: solid white;
-}
-
 #infos
 {
     font-size: 37px;
+}
+
+#main_line
+{
+    width: 70%;
 }
 
 #game_canvas

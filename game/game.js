@@ -3,7 +3,6 @@
 function initializeGame()
 {
     mode = "classic"; //
-    // theme = "light"; //
 
     game = new LocalGame1v1();
     game.refreshBackground();

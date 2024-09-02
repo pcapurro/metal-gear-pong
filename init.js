@@ -1,8 +1,4 @@
-localStorage.clear(); //
-localStorage.setItem('theme', 'dark'); //
-
-loadBackground();
-loadTexts();
+loadPreference();
 
 displayTitlePage();
 removeTitlePage(); //
