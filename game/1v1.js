@@ -366,7 +366,19 @@ class LocalGame1v1
                 document.getElementById('infos').textContent = "Left player won the game!";
             if (this.scores[1] > 9)
                 document.getElementById('infos').textContent = "Right player won the game!";
-            
+
+            let number = generateNumber(2);
+            if (number == 1)
+            {
+                document.getElementById('loser_sound').volume = 0.1;
+                document.getElementById('loser_sound').play();
+            }
+            else
+            {
+                document.getElementById('winner_sound').volume = 0.1;
+                document.getElementById('winner_sound').play();
+            }
+
             return (true);
         }
         return (false);

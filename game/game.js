@@ -12,17 +12,24 @@ function launchGame(value)
 {
     active = true;
 
+    let nb_sound = document.getElementById('nb_sound');
+    nb_sound.volume = 0.1;
+
     document.getElementById('start_game').classList.add('d-none');
     document.getElementById('options').classList.add('d-none');
+
     document.getElementById('infos').style.display = "block";
     document.getElementById('infos').style.fontSize = "35px";
 
+    document.getElementById('winner_sound').pause();
+    document.getElementById('loser_sound').pause();
+
     if (value == 3)
-        document.getElementById('infos').textContent = "3", game.refreshBackground();
+        document.getElementById('infos').textContent = "3", game.refreshBackground(), nb_sound.play();
     else if (value == 2)
-        document.getElementById('infos').textContent = "2", game.refreshScores();
+        document.getElementById('infos').textContent = "2", game.refreshScores(), nb_sound.play();
     else if (value == 1)
-        document.getElementById('infos').textContent = "1", game.refreshPlayers();
+        document.getElementById('infos').textContent = "1", game.refreshPlayers(), nb_sound.play();
     else if (value == 0)
         document.getElementById('infos').textContent = "Go!", game.refreshLives();
 
