@@ -2,8 +2,6 @@
 
 function initializeGame()
 {
-    mode = "bonus"; //
-
     game = new LocalGame1v1();
     game.refreshBackground();
 }
@@ -15,6 +13,7 @@ function launchGame(value)
     active = true;
 
     document.getElementById('start_game').classList.add('d-none');
+    document.getElementById('options').classList.add('d-none');
     document.getElementById('infos').style.display = "block";
     document.getElementById('infos').style.fontSize = "35px";
 
@@ -67,6 +66,7 @@ function stopGame()
     document.getElementById('infos').style.fontSize = "25px";
 
     document.getElementById('start_game').classList.remove('d-none');
+    document.getElementById('options').classList.remove('d-none');
 
     document.getElementById('duel_theme').pause();
 }

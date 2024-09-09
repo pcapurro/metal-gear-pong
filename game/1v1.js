@@ -145,43 +145,40 @@ class LocalGame1v1
 
         // bonus creation
 
-        if (mode != "classic")
-        {
-            let bonus_one_data = {
-                game: this,
+        let bonus_one_data = {
+            game: this,
 
-                object_width: this.ball_width,
-                object_heigth: this.ball_height,
+            object_width: this.ball_width,
+            object_heigth: this.ball_height,
 
-                x_pos : (this.game_width / 4),
-                y_pos : (this.game_height / 2),
+            x_pos : (this.game_width / 4),
+            y_pos : (this.game_height / 2),
 
-                speed: 2,
-                color: this.bonus_color,
+            speed: 2,
+            color: this.bonus_color,
 
-                direction : this.ball_direction,
-                name:1,
-            }
-
-            let bonus_two_data = {
-                game: this,
-
-                object_width: this.ball_width,
-                object_heigth: this.ball_height,
-
-                x_pos : (this.game_width / 2 + (this.game_width / 4)),
-                y_pos : (this.game_height / 2),
-
-                speed: 2,
-                color: this.bonus_color,
-
-                direction : this.ball_direction + 90,
-                name:2,
-            }
-
-            this.bonus_one = new PowerUp(...Object.values(bonus_one_data));
-            this.bonus_two = new PowerUp(...Object.values(bonus_two_data));
+            direction : this.ball_direction,
+            name: 1,
         }
+
+        let bonus_two_data = {
+            game: this,
+
+            object_width: this.ball_width,
+            object_heigth: this.ball_height,
+
+            x_pos : (this.game_width / 2 + (this.game_width / 4)),
+            y_pos : (this.game_height / 2),
+
+            speed: 2,
+            color: this.bonus_color,
+
+            direction : this.ball_direction + 90,
+            name: 2,
+        }
+
+        this.bonus_one = new PowerUp(...Object.values(bonus_one_data));
+        this.bonus_two = new PowerUp(...Object.values(bonus_two_data));
 
         // sounds initialization
 

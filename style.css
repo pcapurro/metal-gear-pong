@@ -4,9 +4,9 @@
     transform: translateY(+5%);
 }
 
-#infos
+#infos, #separator_a, #separator_b
 {
-    font-size: 25px;
+    font-size: 30px;
 }
 
 #konami_toast
