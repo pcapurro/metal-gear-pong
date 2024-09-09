@@ -16,6 +16,7 @@ function launchGame(value)
 
     document.getElementById('start_game').classList.add('d-none');
     document.getElementById('infos').style.display = "block";
+    document.getElementById('infos').style.fontSize = "35px";
 
     if (value == 3)
         document.getElementById('infos').textContent = "3", game.refreshBackground();
@@ -62,7 +63,9 @@ function startGame()
 
 function stopGame()
 {
-    document.getElementById('infos').style.display = "none";
+    document.getElementById('infos').style.display = "block";
+    document.getElementById('infos').style.fontSize = "25px";
+
     document.getElementById('start_game').classList.remove('d-none');
 
     document.getElementById('duel_theme').pause();

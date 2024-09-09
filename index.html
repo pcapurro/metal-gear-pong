@@ -28,29 +28,38 @@
         <!-- Game page -->
 
         <div id="game_page">
-            <button id="theme_btn" class="btn border"></button>
+
             <canvas id="game_canvas" class="border border-4" width="1100" height="720"></canvas>
-            <br>
-            <button id="start_game" class="d-flex btn btn-lg btn-simple border mx-auto">Launch a game</button>
-            <b id="infos" class="text-center"></b>
+            
+            <b id="infos" class="text-center mt-2"></b>
+            <div>
+                <button id="theme_btn" class="btn border"></button>
+                <button id="start_game" class="d-flex btn btn-lg btn-simple border mx-auto mt-3">Launch a game</button>
+            </div>
             <hr id="main_line" class="mx-auto">
+
         </div>
 
         <!-- Konami Code achievement -->
 
         <div id="konami_toast" class="toast border border-2">
+
             <div id="konami_toast_header" class="toast-header">
                 <img id="konami_toast_symbol" src="">
                 <strong id="konami_title" class="ms-2">Achievement unlocked!</strong>
             </div>
+            
             <div id="konami_toast_body" class="toast-body border border-2">
+                
                 <div>
                     <a id="konami_quote">« You're pretty good! »</a>
                 </div>
                 <div>
                     <a id="konami_obj">You typed the Konami Code.</a>
                 </div>
+            
             </div>
+
         </div>
 
     </body>

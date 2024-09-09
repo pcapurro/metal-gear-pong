@@ -78,8 +78,8 @@ class LocalGame1v1
         // displaying scores
 
         let score_y = this.game_height / 6;
-        let left_score_x = (this.game_width / 4) - this.text_size / 4;
-        let right_score_x = (this.game_width - this.game_width / 4) - this.text_size / 4;
+        let left_score_x = (this.game_width / 4) - (this.display.measureText("0").width);
+        let right_score_x = (this.game_width - this.game_width / 4) - (this.display.measureText("0").width);
 
         this.display.fillStyle = this.bar_color;
 
@@ -366,9 +366,9 @@ class LocalGame1v1
         if (this.scores[0] > 9 || this.scores[1] > 9)
         {
             if (this.scores[0] > 9)
-                document.getElementById('infos').textContent = "Left player won the game";
+                document.getElementById('infos').textContent = "Left player won the game!";
             if (this.scores[1] > 9)
-                document.getElementById('infos').textContent = "Right player won the game";
+                document.getElementById('infos').textContent = "Right player won the game!";
             
             return (true);
         }
