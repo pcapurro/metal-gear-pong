@@ -1,8 +1,8 @@
 # Welcome to Metal Gear: Pong!
-Tactical, tennis, action
+### Tactical, tennis, action
 
 This is a 2D game made from the original pong (1972), for 2 players locally on the same keyboard.
-Use E/D keys to move left player and O/L keys to move right player. A bonus mode is availaible including powerups and other features aswell as music and sounds.
+Use 'E'/'D' keys to move left player and 'O'/'L' keys to move right player. A bonus mode is availaible including powerups and other features aswell as music and sounds.
 
 To start the website, just drag and drop the index.html on your web browser. It is supposed to work on Firefox and Chrome.
 A Konami code is availaible on the website, the sequence of inputs needs to be realised on the main page (not in game or on the title page).
