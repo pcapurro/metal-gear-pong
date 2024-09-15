@@ -4,8 +4,6 @@ class LocalGame1v1
 {
     constructor()
     {
-        // global infos initialization
-
         this.player_nb = 2;
         this.scores = [0, 0];
 
@@ -34,15 +32,11 @@ class LocalGame1v1
 
         this.alert = 0;
 
-        // canvas creation
-
         this.canvas = document.getElementById('game_canvas');
         this.display = this.canvas.getContext('2d');
 
         this.canvas.width = this.game_width;
         this.canvas.height = this.game_height;
-
-        // game display loading
 
         if (theme == "light")
         {
@@ -59,12 +53,8 @@ class LocalGame1v1
             this.ball_color = "white";
         }
 
-        // displaying background
-
         this.display.fillStyle = this.background_color;
         this.display.fillRect(0, 0, this.game_width, this.game_height);
-
-        // displaying center bar
 
         let x_bar_center = (this.game_width / 2) - (this.separator_width / 2);
         let nb = ~~(this.game_height / (this.separator_height + this.separator_space));
@@ -75,8 +65,6 @@ class LocalGame1v1
             this.display.fillRect(x_bar_center, ((this.separator_height * value) + this.separator_space * (value + 1)), this.separator_width, this.separator_height);
         }
 
-        // displaying scores
-
         let score_y = this.game_height / 6;
         let left_score_x = (this.game_width / 4) - (this.display.measureText("0").width);
         let right_score_x = (this.game_width - this.game_width / 4) - (this.display.measureText("0").width);
@@ -86,8 +74,6 @@ class LocalGame1v1
         this.display.font = this.text_size + "px " + this.text_font;
         this.display.fillText(this.scores[0], left_score_x, score_y);
         this.display.fillText(this.scores[1], right_score_x, score_y);
-
-        // players creation
 
         let left_player_data = {
             game: this,
@@ -118,8 +104,6 @@ class LocalGame1v1
         this.left_player = new Bar1v1(...Object.values(left_player_data));
         this.right_player = new Bar1v1(...Object.values(right_player_data));
 
-        // ball creation
-
         let x, y;
 
         x = this.game_width / 2 - (this.ball_width / 2);
@@ -142,8 +126,6 @@ class LocalGame1v1
         }
 
         this.ball = new Ball(...Object.values(ball_data));
-
-        // bonus creation
 
         let bonus_one_data = {
             game: this,
@@ -180,8 +162,6 @@ class LocalGame1v1
         this.bonus_one = new PowerUp(...Object.values(bonus_one_data));
         this.bonus_two = new PowerUp(...Object.values(bonus_two_data));
 
-        // sounds initialization
-
         let the_sounds = {
             limit: document.getElementById('knock_sound'),
             powerup: document.getElementById('bonus_sound')
@@ -191,8 +171,6 @@ class LocalGame1v1
         the_sounds.powerup.volume = 0.4;
 
         this.sounds = the_sounds;
-
-        // life initialization
 
         this.life_left = new Image();
         this.life_right = new Image();

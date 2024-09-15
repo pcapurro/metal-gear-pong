@@ -48,8 +48,6 @@ class Ball
         this.game.display.fillText("!", this.x + this.width + 25, this.y);
     }
 
-    // < verifyers > //
-
     isAtPlayer()
     {
         if (this.isAboveOrUnderPlayer() == true || this.isFrontPlayer() == true)
@@ -111,8 +109,6 @@ class Ball
         return (false);
     }
 
-    // < extras > //
-
     addExtraDirection()
     {
         if (this.x < this.game.game_width / 2)
@@ -136,8 +132,6 @@ class Ball
         if (this.bonus_speed < 6)
             this.bonus_speed++;
     }
-
-    // < calculate > //
 
     getOpposite()
     {
@@ -168,8 +162,6 @@ class Ball
 
         return ([x_dir, y_dir]);
     }
-
-    // < animate > //
 
     move()
     {

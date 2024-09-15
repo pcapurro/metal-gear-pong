@@ -35,8 +35,6 @@ class PowerUp
         this.game.display.drawImage(this.ration_img, this.x, this.y);
     }
 
-    // < verifyers > //
-
     isAtPlayer()
     {
         let player;
@@ -96,8 +94,6 @@ class PowerUp
         return (false);
     }
 
-    // < calculators > //
-
     getOpposite()
     {
         if (this.isUpOrDown() == true)
@@ -119,8 +115,6 @@ class PowerUp
 
         return ([x_dir, y_dir]);
     }
-
-    // < animate > //
 
     applyPlayerBonus()
     {
