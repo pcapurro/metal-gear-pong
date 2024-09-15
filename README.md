@@ -3,6 +3,8 @@
 This is a 2D game made from the original pong (1972), for 2 players locally on the same keyboard.
 Use E/D keys to move left player and O/L keys to move right player. A bonus mode is availaible including powerups and other features aswell as music and sounds.
 
+To start the website, just drag and drop the index.html on your web browser. It is supposed to work on Firefox and Chrome.
+
 The game has been built from scratch using canvas from HTML5. This project is my part of a group project called ft_transcendence.
 I have imported my game code and made a simple website to host it here.
 
