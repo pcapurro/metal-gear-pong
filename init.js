@@ -1,10 +1,6 @@
-// localStorage.clear(); //
-
 var page;
 loadPreference();
 displayTitlePage();
-
-removeTitlePage(); //
 
 var keys;
 listenKeyboard();

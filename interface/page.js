@@ -72,6 +72,7 @@ function loadTexts()
 {
     if (theme == "light")
     {
+        document.getElementById('title_txt').style.color = "black";
         document.getElementById('start_game').style.color = "black";
         document.getElementById('infos').style.color = "black";
         document.getElementById('main_line').style.color = "black";
@@ -84,6 +85,7 @@ function loadTexts()
     }
     else
     {
+        document.getElementById('title_txt').style.color = "white";
         document.getElementById('start_game').style.color = "white";
         document.getElementById('infos').style.color = "white";
         document.getElementById('main_line').style.color = "white";

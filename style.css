@@ -1,7 +1,32 @@
+@keyframes blink_anim
+{
+    0% { opacity: 0.50 ;}
+    20% { opacity: 0.75 ;}
+    40% { opacity: 1 ;}
+    60% { opacity: 1 ;}
+    80% { opacity: 0.75 ;}
+    100% { opacity: 0.50 ;}
+}
+
+.blink
+{
+    animation: blink_anim 7s infinite;
+}
+
 #game_page
 {
     top: 50%;
     transform: translateY(+5%);
+}
+
+#title_page
+{
+    transform: translateY(+40%);
+}
+
+#title_txt
+{
+    font-size: 37px;
 }
 
 #infos, #separator_a, #separator_b
